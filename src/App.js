@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './App.css'
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux/es/exports';
+import { getApi } from './redux/actions';
+import Users from './components/Users';
+
+
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getApi());
+  }, []);
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Fetching Api Data using Redux</h1>
+      <Users/>
     </div>
   );
 }
